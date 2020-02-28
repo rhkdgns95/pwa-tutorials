@@ -3,3 +3,4 @@
 
 ## Todo
 - [x] Create static pages, manifest.json
+- [x] iOS Support
