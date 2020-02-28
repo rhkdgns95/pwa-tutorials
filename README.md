@@ -5,6 +5,7 @@
 - [x] Create static pages, manifest.json
 - [x] iOS Support
 - [x] Register a service worker - sw.js
+- [x] The install event
 
 
 ## Study
