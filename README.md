@@ -8,6 +8,7 @@
 - [x] The install event
 - [x] The activate event
 - [x] Lighthouse Audit
+- [x] The fetch event
 
 ## Study
 1. Service workers
@@ -29,3 +30,5 @@
 - ex1: (app.js) register the service worker -> sw.js
 - ex2: (sw.js) install event -> service worker becomes active -> active event -> service worker 'listen' for events
 - ex3: (page reload) -> sw.js -> service 'listen' for events
+2. Servcie wroker - fetch
+- sw.js에서 fetch 이벤트는 웹 앱에서 실행되는 로드되는 것들 즉, 서버에서 fetch하는 모든 요청을 확인할 수 있다.
