@@ -10,7 +10,7 @@
 - [x] Lighthouse Audit
 - [x] The fetch event
 - [x] Banner, Offline Mode - Set Cache
-- [ ] Offline Mode - Get Cache
+- [x] Offline Mode - Get Cache
 
 ## Study
 1. Service workers
