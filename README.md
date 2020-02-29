@@ -7,7 +7,7 @@
 - [x] Register a service worker - sw.js
 - [x] The install event
 - [x] The activate event
-
+- [x] Lighthouse Audit
 
 ## Study
 1. Service workers
