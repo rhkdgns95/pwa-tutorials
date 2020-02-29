@@ -1,7 +1,7 @@
 /**
  *  Cache
  */
-const CACHE_NAME = 'site-static';
+const CACHE_NAME = 'site-static-v1';
 const URLS_TO_CACHE = [
     '/',
     '/index.html',
@@ -29,9 +29,21 @@ self.addEventListener('install', evt => {
 
 /**
  *  2. activate service worker
+ * 
+ *  - update cache
  */
 self.addEventListener('activate', evt => {
     console.log('service worker has been activated');
+    evt.waitUntil(
+        caches.keys().then(keys => {
+            console.log("keys: ", keys);
+            return Promise.all(
+                keys
+                    .filter(key => key !== CACHE_NAME)
+                    .map(deletedKey => caches.delete(deletedKey))
+            );
+        })
+    )
 });
 
 /**

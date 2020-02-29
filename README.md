@@ -11,6 +11,7 @@
 - [x] The fetch event
 - [x] Banner, Offline Mode - Set Cache
 - [x] Offline Mode - Get Cache
+- [x] Offline Mode - Cache Version
 
 ## Study
 1. Service workers
