@@ -12,6 +12,8 @@
 - [x] Banner, Offline Mode - Set Cache
 - [x] Offline Mode - Get Cache
 - [x] Offline Mode - Cache Version
+- [x] Offline Mode - Dynamic Cache
+
 
 ## Study
 1. Service workers
@@ -35,3 +37,10 @@
 - ex3: (page reload) -> sw.js -> service 'listen' for events
 2. Servcie wroker - fetch
 - sw.js에서 fetch 이벤트는 웹 앱에서 실행되는 로드되는 것들 즉, 서버에서 fetch하는 모든 요청을 확인할 수 있다.
+3. offline 캐시 저장
+- sw.js에서 offline의 경우, 페이지의 내용에 해당하는 URL을 캐시에 저장해두었다.
+- 그래서 오프라인인 경우, 아래의 경우에 따라 캐시 데이터를 저장 / 로드 하도록 하였다.
+- 3-1. 최초로 앱이 실행되는 경우 캐시 저장(static page)
+: install event실행 -> cache에 정적인 js와 css들을 저장시켜둔다. addAll메소드 사용하며, 만약, url 하나라도 저장시킬경우 에러가 난다면, 실행되지 않는다는 점을 주의!
+- 3-2. 앱의 라우팅을 통한 캐시 저장 (dynamic page)
+: 정적인 페이지와 다르게, 라우팅을 통한 페이지를 로드하여 fetch 이벤트가 동작할 때, cache의 dynamic-cache를 open하여 url을 추가시키도록 한다.

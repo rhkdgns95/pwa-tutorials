@@ -1,7 +1,11 @@
 /**
  *  Cache
+ *  - static
+ *  - dynamic
  */
-const CACHE_NAME = 'site-static-v1';
+const CACHE_NAME = 'site-static-v2';
+const DYNAMIC_CACHE_NAME = 'site-dynamic-v1';
+
 const URLS_TO_CACHE = [
     '/',
     '/index.html',
@@ -50,12 +54,22 @@ self.addEventListener('activate', evt => {
  *  3. fetch service worker
  * 
  *  - get cache
+ *  - set dynamic cache
  */
 self.addEventListener('fetch', evt => {
     console.log("service worker has been fetch: ", evt);
     evt.respondWith(
         caches.match(evt.request).then(cacheResponse => {
-            return cacheResponse || fetch(evt.request);
+            return cacheResponse || fetch(evt.request).then(fetchRes => {
+                caches.open(DYNAMIC_CACHE_NAME).then(dynamicCache => {
+                    console.log("DYNAMIC_CACHE: ", evt.request.url);
+                    console.log("fetchRes: ", fetchRes);
+                    dynamicCache.put(evt.request.url, fetchRes.clone());
+                    return fetchRes;
+                })
+            });
         })
     )
 })
+
+
