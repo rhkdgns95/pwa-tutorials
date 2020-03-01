@@ -13,6 +13,7 @@
 - [x] Offline Mode - Get Cache
 - [x] Offline Mode - Cache Version
 - [x] Offline Mode - Dynamic Cache
+- [x] Offline Mode - Fallback page
 
 
 ## Study
@@ -44,3 +45,5 @@
 : install event실행 -> cache에 정적인 js와 css들을 저장시켜둔다. addAll메소드 사용하며, 만약, url 하나라도 저장시킬경우 에러가 난다면, 실행되지 않는다는 점을 주의!
 - 3-2. 앱의 라우팅을 통한 캐시 저장 (dynamic page)
 : 정적인 페이지와 다르게, 라우팅을 통한 페이지를 로드하여 fetch 이벤트가 동작할 때, cache의 dynamic-cache를 open하여 url을 추가시키도록 한다.
+- 3-3. offline의 경우, 인덱스 페이지와 UI관련 css/js파일들은 staticCache에, 이외의 나머지 페이지들은 dynamicCache에 저장이 되는데, 로드될 때(fetch 이벤트 동작)만 dynamicCache에 저장이 되는데, 만약 저장되지 않는 즉, 방문한적 없는 페이지의 URL을 입력한 경우에 대해서는 fallback.html이라는 임시의 페이지를 출력하도록 한다.
+(fallback.html은 staticCache에 저장되어 있어야 하며, 방문한 적 없는 페이지가 로드 될 때, 즉 fetch 이벤트에서 caches.match()의 catch()콜백으로 호출된다.)
